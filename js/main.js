@@ -4,7 +4,7 @@ if (!Array.isArray(arrayDeCarrito)) {
     arrayDeCarrito = [];
 }
 
-let arrayDeProductos = []; // Array para almacenar los productos obtenidos del archivo JSON
+let arrayDeProductos = [];
 
 const container = document.getElementById("container");
 const inicio1 = document.getElementById("inicio");
@@ -13,10 +13,10 @@ const carrito1 = document.getElementById("carrito");
 
 
 // Ejecutar eventos
-productos1.addEventListener("click", obtenerProductos); // Cambiado a obtenerProductos para cargar datos antes de mostrar
+productos1.addEventListener("click", obtenerProductos);
 carrito1.addEventListener("click", mostrarCarrito);
 inicio1.addEventListener("click", inicio);
-/* carrito1.addEventListener("click", vaciarCarrito); */
+/* vaciarCarrito1.addEventListener("click", vaciarCarrito); */
 
 document.addEventListener("DOMContentLoaded", () => {
     inicio();
