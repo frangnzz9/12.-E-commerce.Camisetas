@@ -63,12 +63,12 @@ body {
     }
 }
 
-.vaciarCarrito{
+/* .vaciarCarrito{
     padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .encabezado {
     background-color: rgb(39, 5, 62);

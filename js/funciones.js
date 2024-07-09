@@ -1,18 +1,16 @@
-// Función para obtener los datos de data.json
 async function obtenerProductos() {
     try {
-        const response = await fetch('/js/data.json'); // Ruta al archivo data.json
+        const response = await fetch('./js/data.json');
         if (!response.ok) {
             throw new Error('Error al obtener los datos');
-        }
+        };
         arrayDeProductos = await response.json();
         mostrarProductos();
     } catch (error) {
         console.error('Hubo un problema con la petición Fetch:', error);
-    }
-}
+    };
+};
 
-// Función genérica para mostrar elementos
 function crearCard(array, esCarrito = false) {
     container.innerHTML = "";
 
@@ -49,14 +47,12 @@ function crearCard(array, esCarrito = false) {
 
         container.appendChild(card);
     });
-}
+};
 
-// Función para mostrar los productos
 function mostrarProductos() {
     crearCard(arrayDeProductos, false);
-}
+};
 
-// Función para mostrar el carrito
 function mostrarCarrito() {
     container.innerHTML = "";
 
@@ -66,13 +62,10 @@ function mostrarCarrito() {
         mensajeVacio.className = "mensaje-vacio";
         container.appendChild(mensajeVacio);
     } else {
-        crearCard(arrayDeCarrito, true)
+        crearCard(arrayDeCarrito, true);
     }
+};
 
-}
-
-
-// Función para agregar al carrito
 function agregarCarrito(id) {
     const productoElegido = arrayDeProductos.find(el => el.id === id);
     if (arrayDeCarrito.some(element => element.id === productoElegido.id)) {
@@ -97,9 +90,8 @@ function agregarCarrito(id) {
         localStorage.setItem("arrayDeCarrito", JSON.stringify(arrayDeCarrito));
         actualizarBotonCarrito();
     }
-}
+};
 
-// Función para quitar del carrito
 function quitarDelCarrito(id) {
     Swal.fire({
         title: "¿Estás seguro de eliminar este producto?",
@@ -135,9 +127,8 @@ function quitarDelCarrito(id) {
             });
         }
     });
-}
+};
 
-// Función para inicio
 function inicio() {
     container.innerHTML = "";
 
@@ -149,7 +140,7 @@ function inicio() {
     tituloInicio.className = "tituloInicio";
 
     const imgPrincipal = document.createElement("img");
-    imgPrincipal.src = '../img/collage2.png';
+    imgPrincipal.src = './img/collage2.png';
     imgPrincipal.className = "img-principal";
 
     const btnInicio = document.createElement("button");
@@ -168,17 +159,9 @@ function inicio() {
     inicio.appendChild(btnInicio);
 
     container.appendChild(inicio);
-}
+};
 
-// Función para vaciar carrito
 /* function vaciarCarrito() {
-
-    const btnVaciar = document.createElement("button");
-    btnVaciar.innerText = "Vaciar carrito"
-    btnVaciar.className = "vaciarCarrito"; */
-
-
-/* if(("click",btnVaciar)){
     if (arrayDeCarrito.length === 0) {
         Toastify({
             text: "El carrito está vacío.",
@@ -219,11 +202,13 @@ function inicio() {
             }
         });
     }
-}*/
-/*         carrito1.appendChild(btnVaciar);
-} */
-
+}; */
 
 function actualizarBotonCarrito() {
     carrito1.innerText = `Carrito (${arrayDeCarrito.length})`;
-}
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    inicio();
+    actualizarBotonCarrito();
+});
